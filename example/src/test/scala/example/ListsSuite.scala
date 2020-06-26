@@ -97,8 +97,24 @@ import org.junit.Assert.assertEquals
     assert(sum(List(1,2,0)) == 3)
   }
 
+  @Test def `sum more than max`: Unit = {
+    assert(sum(List(1,2,Int.MaxValue)) == Int.MinValue + 2)
+  }
+
   @Test def `max of a few numbers (10pts)`: Unit = {
     assert(max(List(3, 7, 2)) == 7)
+  }
+
+  @Test def `max with negative values`: Unit = {
+    assert(max(List(-7, 3, 4, 8, -15, 10)) == 10)
+  }
+
+  @Test def `max all values negative`: Unit = {
+    assert(max(List(-7, -3, -4, -8, -15, -10)) == -3)
+  }
+
+  @Test def `All zeros`: Unit={
+    assert(max(List(0,0,0,0,0,0,0,0,0,0,0,0,0)) == 0)
   }
 
 

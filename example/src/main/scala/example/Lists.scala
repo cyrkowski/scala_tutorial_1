@@ -22,7 +22,20 @@ object Lists {
    * @param xs A list of natural numbers
    * @return The sum of all elements in `xs`
    */
-  def sum(xs: List[Int]): Int = ???
+  def sumIter(xs: List[Int]): Int = {
+    var sum = 0
+    val xsIterator = xs.iterator
+    while(xsIterator.hasNext){
+      sum = sum + xsIterator.next
+    }
+    sum
+  }
+
+  def sum(xs: List[Int]): Int = {
+    if(xs.isEmpty)return 0
+    var res = xs.head + sum(xs.tail)
+    res
+  }
 
   /**
    * This method returns the largest element in a list of integers. If the
@@ -37,5 +50,34 @@ object Lists {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-  def max(xs: List[Int]): Int = ???
+  def maxIter(xs: List[Int]): Int = {
+    if(xs.isEmpty)throw new java.util.NoSuchElementException()
+
+    var max = Int.MinValue
+    val xsIterator = xs.iterator
+    while(xsIterator.hasNext){
+      val currentValue = xsIterator.next()
+      if(max < currentValue){
+        max = currentValue
+      }
+    }
+
+    max
+  }
+
+  def maxRecursive(prevMax: Int, xs: List[Int]): Int = {
+    var res = 0
+    if(xs.isEmpty)return prevMax
+    if(prevMax<  xs.head){
+      res = maxRecursive(xs.head, xs.tail)
+    }else{
+      res = maxRecursive(prevMax, xs.tail)
+    }
+    res
+  }
+
+  def max(xs: List[Int]):Int ={
+    if(xs.isEmpty)throw new java.util.NoSuchElementException()
+    maxRecursive(Int.MinValue, xs)
+  }
 }
