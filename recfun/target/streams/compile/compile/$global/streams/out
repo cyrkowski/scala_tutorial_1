@@ -1,0 +1,5 @@
+[0m[[0m[31merror[0m] [0m[0m/home/miszle/coursera/scala_tutorial_1/recfun/src/main/scala/recfun/RecFun.scala:50:9: value += is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  Expression does not convert to assignment because receiver is not assignable.[0m
+[0m[[0m[31merror[0m] [0m[0m      x +=countChange(money - coin, coins)[0m
+[0m[[0m[31merror[0m] [0m[0m        ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
