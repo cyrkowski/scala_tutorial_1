@@ -43,14 +43,16 @@ object RecFun extends RecFunInterface {
    * Exercise 3
    */
   def countChange(money: Int, coins: List[Int]): Int = {
-    if(money == 0)1
-    else if(money < 0) 0
-    else {
-      var result = 0
-      for (coin <- coins) {
-        result += countChange(money - coin, coins)
+    def findCombinationsCount(money: Int, coins: List[Int], coinCheckIndex: Int): Int =
+      if (money == 0) 1
+      else if (money < 0) 0
+      else if (coins.length == coinCheckIndex) 0
+      else {
+        val usingFirstCoin = findCombinationsCount(money - coins.apply(coinCheckIndex), coins, coinCheckIndex)
+        val usingRestCoins = findCombinationsCount(money, coins, coinCheckIndex + 1)
+        usingFirstCoin + usingRestCoins
       }
-      result
-    }
+
+    findCombinationsCount(money, coins, 0)
   }
 }
